@@ -21,18 +21,20 @@
 (em "\\" @tag.framework "em"  @tag.framework)
 (strong "\\" @tag.framework  "strong" @tag.framework)
 (code "\\" @tag.framework  "code" @tag.framework)
-
+(code "\\" "code" (_) @markup.code)
+(strong "\\" "strong" (_) @markup.bold)
+(em "\\" "em" (_) @markup.italic)
 (tex "\\" @tag.framework  "tex" @tag.framework)
 
 (ident "\\" @tag (text) @tag)
 
-(subtree "subtree" @identifier.function)
+(subtree "\\" @string-template "subtree" @string-template)
 
-(transclude "transclude" @definition.package)
 (transclude address: (_) @string.key)
 
-(def "def" @keyword)
-(let "let" @keyword)
+
+(def "\\" @keyword "def" @keyword)
+(let  "\\" @keyword "let" @keyword)
 (object "object" @identifier.constant)
 (object self: (_) @keyword)
 (method_decl key: (_) @identifier.method)
@@ -43,18 +45,11 @@
 (markdown_link dest: (_) @string.key)
 (unlabeled_link (external_link)) @string.key
 
-(scope "scope" @definition.class)
-(put "put" @identifier.variable)
+(scope "\\" @keyword "scope" @keyword)
+(put "\\" @keyword "put" @keyword)
 
-(query_tree "query" @keyword)
+(query_tree "\\" @string-template "query" @string-template)
 
-(import "import" @definition.package)
-(export "export" @definition.package)
-(transclude "transclude" @definition.package)
-
-
-(li (text) @spell)
-(em (text) @spell)
-(strong (text) @spell)
-(markdown_link label: (text) @spell)
-(method_decl value: (method_body (text) @spell))
+(import "\\" @string-template  "import" @string-template)
+(export "\\" @string-template  "export" @string-template)
+(transclude "\\" @string-template  "transclude" @string-template)
