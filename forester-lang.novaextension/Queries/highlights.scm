@@ -15,6 +15,7 @@
 (ul "\\" @tag.framework "ul"  @tag.framework)
 (ol "\\" @tag.framework "ol"  @tag.framework)
 (author "\\" @tag.framework "author"  @tag.framework)
+(author "\\" "author" (_) @string.key)
 (title "\\" @tag.framework "title"  @tag.framework)
 (inline_math) @string
 (display_math) @string
