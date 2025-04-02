@@ -43,7 +43,7 @@
 
 (markdown_link label: (_) @markup.link)
 (markdown_link dest: (_) @string.key)
-(unlabeled_link (external_link)) @string.key
+(unlabeled_link (_)  @string.key)
 
 (scope "\\" @keyword "scope" @keyword)
 (put "\\" @keyword "put" @keyword)

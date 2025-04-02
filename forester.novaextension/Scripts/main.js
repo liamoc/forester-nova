@@ -8,7 +8,12 @@ class IssueProvider {
     constructor() {
     }
     provideIssues(editor) {
-        let process = new Process("/Users/liamoc/.opam/default/bin/forester",{
+        var path = nova.config.get("forester.forester-path");
+        if (path == null) { 
+            console.error("Please set up the path to forester in your global extension settings")
+            path = "forester" 
+        };
+        let process = new Process(path,{
             args:["build"],
             cwd:nova.workspace.path,
             stdio:['ignore','pipe','pipe']
@@ -57,6 +62,12 @@ class CompletionProvider {
     }
     provideCompletionItems(editor, context) {
         let text = context.text;
+        var matches = context.matches;
+        let match = matches.pop();
+        if (!(match 
+              && match.captures["string.key"]) && context.reason != CompletionReason.Invoke) {
+            return;
+        }
         let items = [];
         var path = nova.config.get("forester.forester-path");
         if (path == null) { 
@@ -87,6 +98,6 @@ class CompletionProvider {
     }
 }
 nova.assistants.registerCompletionAssistant("forester", new CompletionProvider(), {
-    triggerChars: new Charset("(")
+    triggerChars: new Charset("({[")
 });
 nova.assistants.registerIssueAssistant("forester",new IssueProvider(), {event:"onSave"})
