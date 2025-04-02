@@ -1,0 +1,27 @@
+{
+    "identifier": "org.forester-notes",
+    "name": "Forester",
+    "organization": "forester-notes.org",
+    "description": "Build-on-save, completions and error reporting for Forester",
+    "version": "0.1",
+    "categories": ["completions"],
+    
+    "main": "main.js",
+    
+    "activationEvents": [
+        "onWorkspaceContains:forest.toml"
+    ],
+    
+    "entitlements": {
+        "process": true
+    },
+    
+    "config": [{ 
+        "key": "forester.forester-path", 
+        "type": "path", 
+        "required": true, 
+        "title": "Path", 
+        "description": "Path to forester executable", 
+        "default": "forester"
+    }]
+}

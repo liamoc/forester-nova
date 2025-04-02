@@ -1,0 +1,8 @@
+{
+    "identifier": "org.forester-notes.highlighting",
+    "name": "Forester Language",
+    "organization": "forester-notes.org",
+    "description": "Basic language support for Forester trees",
+    "version": "1.0",
+    "categories": ["languages"]
+}

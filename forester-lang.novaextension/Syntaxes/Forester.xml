@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="forester">
+    <meta>
+        <name>Forester</name>
+        <type>script</type>
+        <preferred-file-extension>tree</preferred-file-extension>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.0">tree</extension>
+    </detectors>
+    
+    <indentation>
+        <increase>
+            <expression>(\{[^}\"']*$)|(\[[^\]\"']*$)|(\([^)\"']*$)</expression>
+        </increase>
+        <decrease>
+            <expression>^\s*(\s*/\*.*\*/\s*)*[\}\]\)\\]</expression>
+        </decrease>
+    </indentation>
+    <brackets>
+        <pair open="{" close="}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+    </brackets>
+    <comments>
+        <single>
+            <expression>% </expression>
+        </single>
+    </comments>
+    <tree-sitter language="markdown">
+        <highlights />
+        <injections />
+    </tree-sitter>
+</syntax>
