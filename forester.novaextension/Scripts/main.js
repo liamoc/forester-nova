@@ -17,8 +17,6 @@ class IssueProvider {
         var errorstate = 0;
         var error= null;
         var errorfile = null;
-        var errorline = null;
-        var errormsg = null;
         process.onStdout(function(line) {
             if (errorstate == 0) {
                 if (line.match(/￫ error/)) {
@@ -33,7 +31,7 @@ class IssueProvider {
                 errorstate = 2;
             }
             else if (errorstate == 2) {
-                error.line = line.split("|")[0].trim()+ 0;
+                error.line = line.split("|")[0].trim()-0;
                 errorstate = 3;
             }
             else if (errorstate == 3) {
@@ -41,7 +39,9 @@ class IssueProvider {
                 arr.shift();
                 error.message = arr.join("^");
                 error.column = 0;
-                items.push(error);
+                if (errorfile == editor.document.path) {
+                   items.push(error);
+                }
                 errorstate = 0;
             }
         })
