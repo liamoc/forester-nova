@@ -33,6 +33,8 @@
 
 (transclude address: (_) @string.key)
 
+(import "\\" "import" (_) @string.key)
+(export "\\" "export" (_) @string.key)
 
 (def "\\" @keyword "def" @keyword)
 (let  "\\" @keyword "let" @keyword)
