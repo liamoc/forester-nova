@@ -28,8 +28,7 @@
             <expression>% </expression>
         </single>
     </comments>
-    <tree-sitter language="markdown">
+    <tree-sitter>
         <highlights />
-        <injections />
     </tree-sitter>
 </syntax>
