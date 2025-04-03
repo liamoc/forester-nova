@@ -27,7 +27,7 @@
 (em "\\" "em" (_) @markup.italic)
 (tex "\\" @tag.framework  "tex" @tag.framework)
 
-(ident "\\" @tag (text) @tag)
+(ident "\\" @tag (_) @tag)
 
 (subtree "\\" @string-template "subtree" @string-template)
 
