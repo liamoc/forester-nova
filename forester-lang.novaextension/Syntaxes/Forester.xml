@@ -15,7 +15,7 @@
             <expression>(\{[^}\"']*$)|(\[[^\]\"']*$)|(\([^)\"']*$)</expression>
         </increase>
         <decrease>
-            <expression>^\s*(\s*/\*.*\*/\s*)*[\}\]\)\\]</expression>
+            <expression>^\s*(\s*/\*.*\*/\s*)*[\}\]\)]</expression>
         </decrease>
     </indentation>
     <brackets>
