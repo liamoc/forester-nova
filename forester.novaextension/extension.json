@@ -23,5 +23,13 @@
         "title": "Path", 
         "description": "Path to forester executable", 
         "default": "forester"
+    }],
+    
+    "configWorkspace": [{
+        "key": "forester.forest-toml-path",
+        "type": "path",
+        "required": false,
+        "title": "Forest.toml path",
+        "description": "A custom path, if the default forest.toml is not desired"
     }]
 }

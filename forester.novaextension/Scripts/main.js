@@ -9,12 +9,19 @@ class IssueProvider {
     }
     provideIssues(editor) {
         var path = nova.config.get("forester.forester-path");
+        var foresttoml = nova.workspace.config.get("forester.forest-toml-path");
         if (path == null) { 
             console.error("Please set up the path to forester in your global extension settings")
             path = "forester" 
         };
+        var args;
+        if (!foresttoml) {
+            args = ["build"];
+        } else {
+            args = ["build", foresttoml];
+        }
         let process = new Process(path,{
-            args:["build"],
+            args:args,
             cwd:nova.workspace.path,
             stdio:['ignore','pipe','pipe']
         });
@@ -62,6 +69,7 @@ class CompletionProvider {
     }
     provideCompletionItems(editor, context) {
         let text = context.text;
+        var foresttoml = nova.workspace.config.get("forester.forest-toml-path");
         var matches = context.matches;
         let match = matches.pop();
         if (!(match 
@@ -74,9 +82,14 @@ class CompletionProvider {
             console.error("Please set up the path to forester in your global extension settings")
             path = "forester" 
         };
-        
+        var args;
+        if (!foresttoml) {
+            args = ["complete"];
+        } else {
+            args = ["complete", foresttoml];
+        }
         let process = new Process(path,{
-            args:["complete"],
+            args:args,
             cwd:nova.workspace.path,
             stdio:['ignore','pipe','pipe']
         });
